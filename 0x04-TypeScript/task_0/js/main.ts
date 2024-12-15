@@ -23,12 +23,29 @@ const studentsList: Student[] = [student1, student2];
 
 const table: HTMLTableElement = document.createElement('table');
 
+table.innerHTML = `
+<thead>
+<tr>
+<th>First name</th>
+<th>Location</th>
+</tr>
+</thead>
+
+<tbody id="table-body">
+
+</tbody>
+`;
+document.body.appendChild(table);
+
+const tableBody = document.getElementById('table-body');
+
 studentsList.forEach((student) => {
   const row: HTMLTableRowElement = document.createElement('tr');
 
-  row.textContent = `${student.firstName} (${student.location})`;
+  row.innerHTML = `
+  <td>${student.firstName}</td>
+  <td>${student.location}</td>
+  `;
 
-  table.appendChild(row);
+  tableBody.appendChild(row);
 });
-
-document.body.appendChild(table);
